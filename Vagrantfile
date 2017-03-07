@@ -56,7 +56,6 @@ Vagrant.configure(2) do |config|
   config.vm.network :forwarded_port, guest: 80,   host: 8087, auto_correct: true  # OPAC
   config.vm.network :forwarded_port, guest: 8080, host: 8088, auto_correct: true  # INTRA
   config.vm.network :forwarded_port, guest: 9200, host: 9206, auto_correct: true  # ES
-  #config.vm.network "private_network", ip: "192.168.50.10"
   config.vm.network "private_network", ip: "192.168.208.13"
 
   config.vm.provider :virtualbox do |vb|
@@ -77,17 +76,7 @@ Vagrant.configure(2) do |config|
 
     else
       # We should safely rely on NFS - /home/vagrant/kohaclone
-      #options = {
-      #  type: "nfs",
-      #  rsync__auto: 'true',
-      #  rsync__exclude: nil,
-      #  rsync__args: ['--verbose', '--archive', '--delete', '-z', '--chmod=ugo=rwX'],
-      #  id: "#{my_box_name}",
-      #  create: true,
-      # mount_options: nil
-      #}
       config.vm.synced_folder ENV['SYNC_REPO'], "/home/vagrant/kohaclone", type: "nfs"
-      #config.vm.synced_folder "#{my_host_code_folder}", "#{my_guest_code_folder}", options
     end
   end
 
