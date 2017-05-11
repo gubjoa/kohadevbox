@@ -60,8 +60,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider :virtualbox do |vb|
     if ENV['KOHA_ELASTICSEARCH']
+      puts "MEM: 4096"
       vb.customize ["modifyvm", :id, "--memory", "4096"]
     else
+      puts "MEM: 2048"
       vb.customize ["modifyvm", :id, "--memory", "2048"]
     end
   end
