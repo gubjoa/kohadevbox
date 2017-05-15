@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
     local_ansible = true
   end
 
-  config.vm.hostname = "kohadevbox"
+  config.vm.hostname = "kohadev-community"
   if OS.windows?
     config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
   end
