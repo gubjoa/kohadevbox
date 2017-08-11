@@ -43,7 +43,9 @@ Vagrant.configure(2) do |config|
   #     vb.customize ["modifyvm", :id, "--memory", "2048"]
   #   end
   # end
-  vb.customize ["modifyvm", :id, "--memory", "2048"]
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
 
   config.vm.synced_folder "~/Code/Koha/community-koha", "/home/vagrant/kohaclone", type: "nfs"
 
