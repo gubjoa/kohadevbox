@@ -88,11 +88,11 @@ Vagrant.configure(2) do |config|
     xenial.vm.box = "geerlingguy/ubuntu1604"
   end
 
-  config.vm.network :forwarded_port, guest: 6001, host: 6001, auto_correct: true  # SIP2
-  config.vm.network :forwarded_port, guest: 80,   host: 8080, auto_correct: true  # OPAC
-  config.vm.network :forwarded_port, guest: 8080, host: 8081, auto_correct: true  # INTRA
-  config.vm.network :forwarded_port, guest: 9200, host: 9200, auto_correct: true  # ES
-  config.vm.network "private_network", ip: "192.168.50.10"
+  config.vm.network :forwarded_port, guest: 6001, host: 6004, auto_correct: true  # SIP2
+  config.vm.network :forwarded_port, guest: 80,   host: 8004, auto_correct: true  # OPAC
+  config.vm.network :forwarded_port, guest: 8080, host: 8604, auto_correct: true  # INTRA
+  config.vm.network :forwarded_port, guest: 9200, host: 9204, auto_correct: true  # ES
+  config.vm.network "private_network", ip: "192.168.208.14"
 
   config.vm.provider :virtualbox do |vb|
     if ENV['KOHA_ELASTICSEARCH']
